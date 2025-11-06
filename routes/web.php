@@ -3,10 +3,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PengadaanController;
 use App\Http\Controllers\PenerimaanController;
 use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [DashboardController::class, 'index'])->name('home');
 
 // Pengadaan
 Route::get('/pengadaan', [PengadaanController::class,'index'])->name('pengadaan.index');

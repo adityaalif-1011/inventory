@@ -8,11 +8,11 @@ class PenerimaanController extends Controller
 {
     public function index(Request $req)
     {
-        $penjualan = DB::table('view_penerimaan')
+        $penerimaans = DB::table('view_penerimaan')
     ->orderBy('tanggal_terima', 'desc')
     ->get();
 
-        return view('penerimaan.index', compact('penerimaan'));
+        return view('penerimaan.index', compact('penerimaans'));
         // $q = $req->query('q');
         // $query = DB::table('view_penerimaan')->orderBy('tanggal_terima','desc');
         // if ($q) $query->where('nama_vendor','like', "%{$q}%")->orWhere('nama_penerima','like', "%{$q}%");
