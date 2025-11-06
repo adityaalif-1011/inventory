@@ -8,19 +8,24 @@ class PenjualanController extends Controller
 {
     public function index(Request $req)
     {
-        $q = $req->query('q');
-        $query = DB::table('view_penjualan')->orderBy('tanggal_penjualan','desc');
-        if ($q) $query->where('nama_penjual','like', "%{$q}%")->orWhere('nama_barang','like', "%{$q}%");
-        $penjualans = $query->paginate(15)->withQueryString();
-        return view('penjualan.index', compact('penjualans','q'));
+        $penjualan = DB::table('view_penjualan')
+    ->orderBy('created_at', 'desc')
+    ->get();
+
+        return view('penjualan.index', compact('penjualan'));
     }
 
     public function show($id)
     {
-        $header = DB::table('penjualan')->where('idpenjualan', $id)->first();
+        $header = DB::table('view_penjualan')->where('idpenjualan', $id)->first();
         $details = DB::table('view_penjualan')->where('idpenjualan', $id)->get();
         if (!$header) return redirect()->route('penjualan.index')->with('error','Penjualan tidak ditemukan');
         return view('penjualan.show', compact('header','details'));
+
+        // $header = DB::table('view_pengadaan')->where('idpengadaan', $id)->first();
+        // $details = DB::table('view_pengadaan_detail')->where('idpengadaan', $id)->get();
+        // if (!$header) return redirect()->route('pengadaan.index')->with('error','Pengadaan tidak ditemukan');
+        // return view('pengadaan.show', compact('header','details'));
     }
 
     public function create()

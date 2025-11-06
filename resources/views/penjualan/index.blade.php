@@ -29,9 +29,9 @@
                             <td>{{ $item->idpenjualan }}</td>
                             <td>{{ $item->tanggal ?? $item->created_at }}</td>
                             <td>{{ $item->nama_pelanggan ?? '-' }}</td>
-                            <td>Rp {{ number_format($item->subtotal_nilai, 0, ',', '.') }}</td>
+                            <td>Rp {{ number_format($item->subtotal, 0, ',', '.') }}</td>
                             <td>Rp {{ number_format($item->ppn, 0, ',', '.') }}</td>
-                            <td>Rp {{ number_format($item->total_nilai, 0, ',', '.') }}</td>
+                            <td>Rp {{ number_format($item->subtotal + $item->ppn, 0, ',', '.') }}</td>
                             <td>
                                 <a href="{{ route('penjualan.show', $item->idpenjualan) }}" class="btn btn-info btn-sm">Detail</a>
                             </td>

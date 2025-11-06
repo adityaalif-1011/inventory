@@ -23,7 +23,6 @@ class PengadaanController extends Controller
         return view('pengadaan.show', compact('header','details'));
     }
 
-    // form create (ambil daftar barang & vendor)
     public function create()
     {
         $barangs = DB::table('barang')->select('idbarang','nama')->get();
@@ -31,7 +30,6 @@ class PengadaanController extends Controller
         return view('pengadaan.create', compact('barangs','vendors'));
     }
 
-    // store -> panggil stored procedure sp_create_pengadaan (expects JSON items)
     public function store(Request $req)
     {
         $req->validate([
