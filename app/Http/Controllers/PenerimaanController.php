@@ -8,11 +8,16 @@ class PenerimaanController extends Controller
 {
     public function index(Request $req)
     {
-        $q = $req->query('q');
-        $query = DB::table('view_penerimaan')->orderBy('tanggal_terima','desc');
-        if ($q) $query->where('nama_vendor','like', "%{$q}%")->orWhere('nama_penerima','like', "%{$q}%");
-        $penerimaans = $query->paginate(15)->withQueryString();
-        return view('penerimaan.index', compact('penerimaans','q'));
+        $penjualan = DB::table('view_penerimaan')
+    ->orderBy('tanggal_terima', 'desc')
+    ->get();
+
+        return view('penerimaan.index', compact('penerimaan'));
+        // $q = $req->query('q');
+        // $query = DB::table('view_penerimaan')->orderBy('tanggal_terima','desc');
+        // if ($q) $query->where('nama_vendor','like', "%{$q}%")->orWhere('nama_penerima','like', "%{$q}%");
+        // $penerimaans = $query->paginate(15)->withQueryString();
+        // return view('penerimaan.index', compact('penerimaans','q'));
     }
 
     public function show($id)
@@ -25,7 +30,6 @@ class PenerimaanController extends Controller
 
     public function create()
     {
-        // butuh daftar pengadaan yang status received? atau created
         $pengadaans = DB::table('pengadaan')->whereIn('status',['created','approved'])->get();
         return view('penerimaan.create', compact('pengadaans'));
     }
