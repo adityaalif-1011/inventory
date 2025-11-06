@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,5 +26,118 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> --}}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'Laravel App')</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            min-height: 100vh;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .sidebar .nav-link {
+            color: #333;
+            border-radius: 0.375rem;
+            margin-bottom: 0.25rem;
+        }
+        .sidebar .nav-link:hover {
+            background-color: #e9ecef;
+        }
+        .sidebar .nav-link.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .main-content {
+            margin-left: 0%;
+        }
+        @media (max-width: 992px) {
+            .sidebar {
+                position: fixed;
+                z-index: 1000;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper d-flex">
+        <!-- Sidebar -->
+        @include('layouts.sidebar')
+
+        <!-- Main Content -->
+        <div class="main-content flex-grow-1">
+            <!-- Header -->
+            {{-- <header class="bg-white border-bottom py-3">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <button class="btn btn-outline-secondary d-lg-none" id="bootstrapSidebarToggle">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                            <h1 class="h3 mb-0 ms-2 d-inline-block">@yield('page-title', 'Dashboard')</h1>
+                        </div>
+                        <div class="col-auto">
+                            <!-- Hapus dropdown user atau ganti dengan info simple -->
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-user me-2 text-muted"></i>
+                                <span class="text-muted">Guest User</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header> --}}
+
+            <!-- Page Content -->
+            <div class="container-fluid py-4">
+                @yield('content')
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Bootstrap Sidebar Toggle
+        document.getElementById('bootstrapSidebarToggle').addEventListener('click', function() {
+            document.getElementById('bootstrapSidebar').classList.toggle('show');
+        });
+
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('bootstrapSidebar');
+            const toggleBtn = document.getElementById('bootstrapSidebarToggle');
+            
+            if (window.innerWidth < 992 && 
+                !sidebar.contains(event.target) && 
+                !toggleBtn.contains(event.target)) {
+                sidebar.classList.remove('show');
+            }
+        });
+
+        // Set active menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.sidebar .nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+    
+    @yield('scripts')
 </body>
 </html>
