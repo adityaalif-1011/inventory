@@ -79,27 +79,6 @@
 
         <!-- Main Content -->
         <div class="main-content flex-grow-1">
-            <!-- Header -->
-            {{-- <header class="bg-white border-bottom py-3">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <button class="btn btn-outline-secondary d-lg-none" id="bootstrapSidebarToggle">
-                                <i class="fas fa-bars"></i>
-                            </button>
-                            <h1 class="h3 mb-0 ms-2 d-inline-block">@yield('page-title', 'Dashboard')</h1>
-                        </div>
-                        <div class="col-auto">
-                            <!-- Hapus dropdown user atau ganti dengan info simple -->
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-user me-2 text-muted"></i>
-                                <span class="text-muted">Guest User</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header> --}}
-
             <!-- Page Content -->
             <div class="container-fluid py-4">
                 @yield('content')

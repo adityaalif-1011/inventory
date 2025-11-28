@@ -16,13 +16,13 @@
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a href="{{ url('/') }}" class="nav-link py-3">
-                    <i class="fas fa-home fa-fw me-3"></i>
+                    <i class="fas fa-user fa-fw me-3"></i>
                     User
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ url('/users') }}" class="nav-link py-3">
-                    <i class="fas fa-users fa-fw me-3"></i>
+                    <i class="fas fa-address-card fa-fw me-3"></i>
                     Role 
                 </a>
             </li>
@@ -43,7 +43,7 @@
             <li class="nav-item">
                 <a href="{{ url('/orders') }}" class="nav-link py-3 d-flex justify-content-between align-items-center">
                     <span>
-                        <i class="fas fa-shopping-cart fa-fw me-3"></i>
+                        <i class="fas fa-store fa-fw me-3"></i>
                         Vendor
                     </span>
                 </a>
@@ -51,7 +51,7 @@
             <li class="nav-item">
                 <a href="{{ url('/orders') }}" class="nav-link py-3 d-flex justify-content-between align-items-center">
                     <span>
-                        <i class="fas fa-shopping-cart fa-fw me-3"></i>
+                        <i class="fas fa-chart-line fa-fw me-3"></i>
                         Margin Penjualan
                     </span>
                 </a>
@@ -65,19 +65,19 @@
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a href="{{ url('/categories') }}" class="nav-link py-3">
-                    <i class="fas fa-tags fa-fw me-3"></i>
+                    <i class="fas fa-clipboard-check fa-fw me-3"></i>
                     Penerimaan
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ url('/reports') }}" class="nav-link py-3">
-                    <i class="fas fa-chart-bar fa-fw me-3"></i>
+                    <i class="fas fa-list-check fa-fw me-3"></i>
                     Pengadaan
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ url('/settings') }}" class="nav-link py-3">
-                    <i class="fas fa-cog fa-fw me-3"></i>
+                    <i class="fas fa-money-check-dollar fa-fw me-3"></i>
                     Penjualan
                 </a>
             </li>
